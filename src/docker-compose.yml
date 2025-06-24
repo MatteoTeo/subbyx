@@ -1,0 +1,36 @@
+
+services:
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: mysql-container
+  #   environment:
+  #     DB_HOST: database-subbyx.crys4i82y21w.eu-central-1.rds.amazonaws.com
+  #     DB_USER: admin
+  #     DB_PASSWORD: subbyx-test
+  #     DB_NAME: database-subbyx
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:- db_data:/var/lib/mysql
+  api:
+    build:
+      context: .
+    container_name: api-container
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - .:/index
+    command: npm start  # Comando per avviare l'app
+
+  test:
+    build:
+      context: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: npm test  # Comando per eseguire i test
+
+
+
