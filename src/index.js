@@ -334,6 +334,6 @@ WHERE
 
 
 
-app.listen(port, () => {
+app.listen(3000, '0.0.0.0', () => {
   console.log(`Server in ascolto su http://localhost:${port}`);
 });
